@@ -6,7 +6,7 @@ interface Props {
 }
 export default component$<Props>(({ classNames }) => {
 	return (
-		<p class={cn("leading-7 text-neutral-300 mt-4 mb-8 ", classNames)}>
+		<p class={cn("leading-7 text-neutral-300 ", classNames)}>
 			<Slot />
 		</p>
 	);

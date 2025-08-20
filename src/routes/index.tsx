@@ -1,9 +1,9 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import { type DocumentHead, Link } from "@builder.io/qwik-city";
 import Button from "~/components/button";
 import TypographyH1 from "~/components/typography-h1";
 import TypographyP from "~/components/typography-p";
-import logo from "../assets/image.svg";
+import logo from "../assets/images/image.svg";
 
 export default component$(() => {
 	return (
@@ -11,14 +11,18 @@ export default component$(() => {
 			<div class="flex flex-col justify-center items-center text-center p-8 ">
 				<div class="bg-white/10 backdrop-blur-lg rounded-2xl px-10 py-20 shadow-xl">
 					<TypographyH1 classNames=" text-6xl drop-shadow-md">
-						Anime Cliente
+						Anime Card Store
 					</TypographyH1>
-					<TypographyP classNames="text-2xl font-bold">
+					<TypographyP classNames="text-2xl font-bold my-6">
 						Encuentra tus cartas favoritas en un solo lugar.
 					</TypographyP>
 					<div class="flex gap-4 flex-wrap justify-center">
-						<Button name="Iniciar Sesión" url="login" />
-						<Button name="Registrarse" url="/register" />
+						<Link href="/login/">
+							<Button>Iniciar Sesión </Button>
+						</Link>
+						<Link href="/register/">
+							<Button>Registrarse </Button>
+						</Link>
 					</div>
 				</div>
 			</div>
@@ -39,7 +43,13 @@ export const head: DocumentHead = {
 	meta: [
 		{
 			name: "description",
-			content: "Qwik site description",
+			content: "Aplicación para comprar e intercambiar cartas favoritas",
 		},
 	],
 };
+
+// <CardLoading
+// 	loading={true}
+// 	title="Cargando…"
+// 	class="scale-100 md:scale-110"
+// />

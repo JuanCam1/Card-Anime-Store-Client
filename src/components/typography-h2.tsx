@@ -6,12 +6,7 @@ interface Props {
 }
 export default component$<Props>(({ classNames }) => {
 	return (
-		<h1
-			class={cn(
-				"text-3xl font-semibold tracking-tight dark:text-blue-500 text-blue-600",
-				classNames,
-			)}
-		>
+		<h1 class={cn("text-3xl font-semibold tracking-tight ", classNames)}>
 			<Slot />
 		</h1>
 	);

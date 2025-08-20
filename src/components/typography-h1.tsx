@@ -8,7 +8,7 @@ export default component$<Props>(({ classNames }) => {
 	return (
 		<h1
 			class={cn(
-				"scroll-m-20 text-center text-4xl font-extrabold tracking-tight text-balance text-neutral-200",
+				"font-display tracking-widest scroll-m-20 text-center text-4xl font-extrabold  text-balance text-neutral-200",
 				classNames,
 			)}
 		>
