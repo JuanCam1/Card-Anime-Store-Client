@@ -27,7 +27,7 @@ export default component$<Props>(
       <div
         class={`${showFilters.value ? "block" : "hidden"} lg:block w-80 flex-shrink-0`}
       >
-        <div class="bg-[rgba(0,0,0,0.6)] backdrop-blur-sm rounded-lg p-6 sticky top-20">
+        <div class="bg-[rgba(0,0,0,0.6)] backdrop-blur-sm rounded-md p-6 sticky top-20">
           <div class="flex items-center justify-between mb-6">
             <h2 class="text-lg font-semibold text-white">Filtros</h2>
             <button
