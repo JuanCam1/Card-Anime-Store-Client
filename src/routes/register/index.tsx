@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useStore } from '@builder.io/qwik'
+import { component$, noSerialize } from '@builder.io/qwik'
 import { DocumentHead, Link } from '@builder.io/qwik-city'
 
 import {
@@ -10,55 +10,10 @@ import {
 import Button from '~/components/button'
 import TypographyH2 from '~/components/typography-h2'
 import TypographyP from '~/components/typography-p'
-import {
-  RegisterForm,
-  registerSchema,
-} from '~/modules/register/schemas/register-schema'
-import noUser from '../../assets/images/no-user.webp'
+import useRegister from '~/modules/register/hooks/use-register'
 
 export default component$(() => {
-  const formData = useStore<RegisterForm>({
-    name: '',
-    email: '',
-    password: '',
-    phone: '',
-    image: null,
-  })
-
-  const imagePreview = useSignal(noUser)
-  const showPassword = useSignal(false)
-
-  const handleSubmit = $(async (e: Event) => {
-    const validation = registerSchema.safeParse(formData)
-
-    if (!validation.success) {
-      console.log('❌ Errores:', validation.error.format())
-      return
-    }
-
-    // const data = new FormData();
-    // data.append('name', formData.name);
-    // data.append('email', formData.email);
-    // data.append('password', formData.password);
-    // data.append('phone', formData.phone);
-    // if (formData.image) {
-    //   data.append('image', formData.image);
-    // }
-
-    // try {
-    //   const res = await fetch('http://localhost:3000/api/auth/register', {
-    //     method: 'POST',
-    //     body: data,
-    //   });
-
-    //   const result = await res.json();
-    //   console.log('✅ Respuesta:', result);
-    // } catch (err) {
-    //   console.error('⚠️ Error en petición:', err);
-    // }
-    console.log('✅ Datos válidos:', formData)
-  })
-
+  const { formData, handleSubmit, imagePreview, showPassword } = useRegister()
   return (
     <div class="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
       <div class="absolute z-10 left-0 top-0 p-4">
@@ -91,10 +46,17 @@ export default component$(() => {
             <div class="flex gap-6 w-full">
               <div class="flex flex-col gap-6 w-[60%]">
                 <div>
-                  <label class="block text-md font-bold text-purple-100 mb-2">
+                  <label
+                    for="name"
+                    class="block text-md font-bold text-purple-100 mb-2"
+                  >
                     Nombre Completo
                   </label>
                   <input
+                    id="name"
+                    name="name"
+                    value={formData.name}
+                    onInput$={(_, el) => (formData.name = el.value)}
                     class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0 `}
                   />
                   {/* <div class="mt-1 h-3">
@@ -106,10 +68,17 @@ export default component$(() => {
                         </div> */}
                 </div>
                 <div>
-                  <label class="block text-md font-bold text-purple-100 mb-2">
+                  <label
+                    for="email"
+                    class="block text-md font-bold text-purple-100 mb-2"
+                  >
                     Email
                   </label>
                   <input
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    onInput$={(_, el) => (formData.email = el.value)}
                     type="email"
                     class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0 `}
                   />
@@ -122,11 +91,18 @@ export default component$(() => {
                         </div> */}
                 </div>
                 <div>
-                  <label class="block text-md font-bold text-purple-100 mb-2">
+                  <label
+                    for="password"
+                    class="block text-md font-bold text-purple-100 mb-2"
+                  >
                     Contraseña
                   </label>
                   <div class="relative">
                     <input
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onInput$={(_, el) => (formData.password = el.value)}
                       type={showPassword.value ? 'text' : 'password'}
                       class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0 `}
                     />
@@ -154,10 +130,17 @@ export default component$(() => {
                 </div>
 
                 <div>
-                  <label class="block text-md font-bold text-purple-100 mb-2">
+                  <label
+                    for="phone"
+                    class="block text-md font-bold text-purple-100 mb-2"
+                  >
                     Telefono
                   </label>
                   <input
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onInput$={(_, el) => (formData.phone = el.value)}
                     class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0`}
                   />
                   {/* <div class="mt-1 h-3">
@@ -189,6 +172,7 @@ export default component$(() => {
                         const reader = new FileReader()
                         reader.onloadend = () => {
                           imagePreview.value = String(reader.result)
+                          formData.image = noSerialize(file)
                         }
                         reader.readAsDataURL(file)
                       }

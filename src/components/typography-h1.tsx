@@ -1,18 +1,18 @@
-import { component$, Slot } from "@builder.io/qwik";
-import { cn } from "~/lib/merge";
+import { component$, Slot } from '@builder.io/qwik'
+import { cn } from '~/lib/merge'
 
 interface Props {
-	classNames?: string;
+  classNames?: string
 }
 export default component$<Props>(({ classNames }) => {
-	return (
-		<h1
-			class={cn(
-				"font-display tracking-widest scroll-m-20 text-center text-4xl font-extrabold  text-balance text-neutral-200",
-				classNames,
-			)}
-		>
-			<Slot />
-		</h1>
-	);
-});
+  return (
+    <h1
+      class={cn(
+        'font-display tracking-widest scroll-m-20 text-center text-4xl font-extrabold  text-balance text-neutral-200',
+        classNames,
+      )}
+    >
+      <Slot />
+    </h1>
+  )
+})

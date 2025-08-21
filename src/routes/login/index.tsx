@@ -1,20 +1,19 @@
-import { $, component$, useSignal } from '@builder.io/qwik'
-import { DocumentHead, Link } from '@builder.io/qwik-city'
+import { component$ } from "@builder.io/qwik";
+import { DocumentHead, Link } from "@builder.io/qwik-city";
 
 import {
   LuArrowBigLeftDash,
   LuAtSign,
   LuEye,
   LuEyeOff,
-} from '@qwikest/icons/lucide'
-import Button from '~/components/button'
-import TypographyH2 from '~/components/typography-h2'
-import TypographyP from '~/components/typography-p'
-import { LoginForm, loginSchema } from '~/modules/login/schemas/login-schema'
+} from "@qwikest/icons/lucide";
+import Button from "~/components/button";
+import TypographyH2 from "~/components/typography-h2";
+import TypographyP from "~/components/typography-p";
+import useLogin from "~/modules/login/hooks/use-login";
 
 export default component$(() => {
-  const showPassword = useSignal(false)
-
+  const { formData, handleSubmit, showPassword } = useLogin();
   return (
     <div class="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 flex items-center justify-center p-4">
       <div class="absolute z-10 left-0 top-0 p-4">
@@ -39,13 +38,24 @@ export default component$(() => {
             Iniciar Sesión
           </TypographyH2>
 
-          <form class="space-y-6">
+          <form
+            preventdefault:submit
+            class="space-y-6"
+            onSubmit$={handleSubmit}
+          >
             <div>
-              <label class="block text-sm font-medium text-purple-100 mb-2">
-                Email o Usuario
+              <label
+                for="email"
+                class="block text-sm font-medium text-purple-100 mb-2"
+              >
+                Email
               </label>
               <div class="relative">
                 <input
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onInput$={(_, el) => (formData.email = el.value)}
                   type="email"
                   class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0 `}
                 />
@@ -59,12 +69,19 @@ export default component$(() => {
             </div>
 
             <div>
-              <label class="block text-sm font-medium text-purple-100 mb-2">
+              <label
+                for="password"
+                class="block text-sm font-medium text-purple-100 mb-2"
+              >
                 Contraseña
               </label>
               <div class="relative">
                 <input
-                  type={showPassword.value ? 'text' : 'password'}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onInput$={(_, el) => (formData.password = el.value)}
+                  type={showPassword.value ? "text" : "password"}
                   class={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white focus:outline-none focus:ring-0 `}
                 />
                 <button
@@ -103,7 +120,7 @@ export default component$(() => {
 
           <div class="mt-6 text-center">
             <TypographyP classNames="text-purple-200 text-sm mb-3">
-              ¿No tienes cuenta?{' '}
+              ¿No tienes cuenta?{" "}
               <Link
                 href="/register/"
                 class="text-purple-300 hover:text-purple-400 font-medium transition-colors"
@@ -113,16 +130,19 @@ export default component$(() => {
             </TypographyP>
           </div>
           <div class="flex items-center justify-center">
-            <span class="text-sm text-purple-300 hover:text-white transition-colors">
+            <Link
+              href="/home/"
+              class="text-sm text-purple-300 hover:text-white transition-colors"
+            >
               ¿Olvidaste tu contraseña?
-            </span>
+            </Link>
           </div>
         </div>
       </div>
     </div>
-  )
-})
+  );
+});
 
 export const head: DocumentHead = {
-  title: 'Inicio de Sesión',
-}
+  title: "Inicio de Sesión",
+};

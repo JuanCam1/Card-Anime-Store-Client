@@ -1,68 +1,68 @@
-import { component$, useStylesScoped$ } from "@builder.io/qwik";
-import { cn } from "~/lib/merge";
-import image from "../assets/images/Charizard.webp";
+import { component$, useStylesScoped$ } from '@builder.io/qwik'
+import { cn } from '~/lib/merge'
+import image from '../assets/images/Charizard.webp'
 
 interface Props {
-	loading?: boolean;
-	frontSrc?: string;
-	backSrc?: string;
-	title?: string;
-	class?: string;
+  loading?: boolean
+  frontSrc?: string
+  backSrc?: string
+  title?: string
+  class?: string
 }
 
 export default component$<Props>(
-	({ loading, frontSrc, backSrc, title, class: className }) => {
-		useStylesScoped$(styles);
-		return (
-			<div class={cn("relative mx-auto select-none", className)}>
-				<div class="card-scene">
-					<div class={cn("card", loading && "card--spinning")}>
-						<div class="relative card-face card-front bg-gradient-to-b from-rose-400 to-red-500">
-							<div class="absolute bottom-4 left-1/2 -translate-x-1/2 ">
-								<span class="font-display text-2xl font-extrabold tracking-widest text-white drop-shadow-md">
-									Charizad
-								</span>
-							</div>
-							{frontSrc ? (
-								<img
-									src={frontSrc}
-									alt={title}
-									class="h-full w-full object-contain rounded-[1.25rem] "
-								/>
-							) : (
-								<img
-									src={image}
-									alt={title}
-									class="h-full w-full object-contain rounded-[1.25rem]"
-								/>
-							)}
-						</div>
+  ({ loading, frontSrc, backSrc, title, class: className }) => {
+    useStylesScoped$(styles)
+    return (
+      <div class={cn('relative mx-auto select-none', className)}>
+        <div class="card-scene">
+          <div class={cn('card', loading && 'card--spinning')}>
+            <div class="relative card-face card-front bg-gradient-to-b from-rose-400 to-red-500">
+              <div class="absolute bottom-4 left-1/2 -translate-x-1/2 ">
+                <span class="font-display text-2xl font-extrabold tracking-widest text-white drop-shadow-md">
+                  Charizad
+                </span>
+              </div>
+              {frontSrc ? (
+                <img
+                  src={frontSrc}
+                  alt={title}
+                  class="h-full w-full object-contain rounded-[1.25rem] "
+                />
+              ) : (
+                <img
+                  src={image}
+                  alt={title}
+                  class="h-full w-full object-contain rounded-[1.25rem]"
+                />
+              )}
+            </div>
 
-						<div class="card-face card-back">
-							{backSrc ? (
-								<img
-									src={backSrc}
-									alt="Card back"
-									class="h-full w-full object-contain rounded-[1.25rem]"
-								/>
-							) : (
-								<div class="pokeball-back h-full w-full rounded-[1.25rem]" />
-							)}
-						</div>
-					</div>
-				</div>
+            <div class="card-face card-back">
+              {backSrc ? (
+                <img
+                  src={backSrc}
+                  alt="Card back"
+                  class="h-full w-full object-contain rounded-[1.25rem]"
+                />
+              ) : (
+                <div class="pokeball-back h-full w-full rounded-[1.25rem]" />
+              )}
+            </div>
+          </div>
+        </div>
 
-				{/* sombra suave debajo */}
-				<div
-					class={cn(
-						"pointer-events-none mx-auto mt-4 h-2 w-40 rounded-full bg-black/20 blur-md",
-						loading ? "animate-pulse" : "",
-					)}
-				/>
-			</div>
-		);
-	},
-);
+        {/* sombra suave debajo */}
+        <div
+          class={cn(
+            'pointer-events-none mx-auto mt-4 h-2 w-40 rounded-full bg-black/20 blur-md',
+            loading ? 'animate-pulse' : '',
+          )}
+        />
+      </div>
+    )
+  },
+)
 
 const styles = `
 .card-scene {
@@ -126,4 +126,4 @@ const styles = `
   mix-blend-mode: multiply;
   opacity: .35;
 }
-`;
+`
