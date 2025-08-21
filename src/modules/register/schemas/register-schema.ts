@@ -1,6 +1,6 @@
 import z from 'zod'
 
-export const loginSchema = z.object({
+export const registerSchema = z.object({
   name: z.string().min(1, 'El nombre es obligatorio'),
   email: z.email('El correo no es válido'),
   password: z.string().min(6, 'La contraseña debe tener al menos 6 caracteres'),
@@ -15,4 +15,4 @@ export const loginSchema = z.object({
     .nullable(),
 })
 
-export type LoginForm = z.infer<typeof loginSchema>
+export type RegisterForm = z.infer<typeof registerSchema>

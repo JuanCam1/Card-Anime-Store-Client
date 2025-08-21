@@ -1,53 +1,69 @@
 @import "tailwindcss";
 
 @keyframes float {
-	0%,
-	100% {
-		transform: translateY(0);
-	}
-	50% {
-		transform: translateY(-10px);
-	}
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 @font-face {
-	font-display: swap;
-	font-family: "Pokemon-Font";
-	font-style: normal;
-	font-weight: 400 700 900;
-	src: url("./assets/fonts/Pokemon/pokemon-font.ttf") format("truetype");
+  font-display: swap;
+  font-family: "Pokemon-Font";
+  font-style: normal;
+  font-weight: 400 700 900;
+  src: url("./assets/fonts/Pokemon/pokemon-font.ttf") format("truetype");
 }
 
 @font-face {
-	font-display: swap;
-	font-family: "Roboto-Font";
-	font-style: normal;
-	font-weight: 700;
-	src: url("./assets/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
+  font-display: swap;
+  font-family: "Roboto-Font";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/Roboto/Roboto-Bold.ttf") format("truetype");
 }
 @font-face {
-	font-display: swap;
-	font-family: "Roboto-Font";
-	font-style: normal;
-	font-weight: 800;
-	src: url("./assets/fonts/Roboto/Roboto-ExtraBold.ttf") format("truetype");
+  font-display: swap;
+  font-family: "Roboto-Font";
+  font-style: normal;
+  font-weight: 800;
+  src: url("./assets/fonts/Roboto/Roboto-ExtraBold.ttf") format("truetype");
 }
 @font-face {
-	font-display: swap;
-	font-family: "Roboto-Font";
-	font-style: normal;
-	font-weight: 500;
-	src: url("./assets/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
+  font-display: swap;
+  font-family: "Roboto-Font";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./assets/fonts/Roboto/Roboto-Medium.ttf") format("truetype");
 }
 @font-face {
-	font-display: swap;
-	font-family: "Roboto-Font";
-	font-style: normal;
-	font-weight: 600;
-	src: url("./assets/fonts/Roboto/Roboto-SemiBold.ttf") format("truetype");
+  font-display: swap;
+  font-family: "Roboto-Font";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./assets/fonts/Roboto/Roboto-SemiBold.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Comic-Font";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/Comic/ComicNeue-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Comic-Font";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/Comic/ComicNeue-Regular.ttf") format("truetype");
 }
 
 @theme {
-	--font-display: "Pokemon-Font", sans-serif;
-	--font-sans: "Roboto-Font", sans-serif;
+  --font-display: "Pokemon-Font", sans-serif;
+  /* --font-sans: "Roboto-Font", sans-serif; */
+  --font-sans: "Comic-Font", sans-serif;
 }
