@@ -1,4 +1,5 @@
 import { component$, Signal } from "@builder.io/qwik";
+import { Link } from "@builder.io/qwik-city";
 import { LuBell, LuHeart } from "@qwikest/icons/lucide";
 import logo from "../assets/images/image.svg";
 
@@ -35,9 +36,12 @@ export default component$<Props>(({ notifications }) => {
             <button class="p-2 text-gray-200 hover:text-purple-400 transition-colors">
               <LuHeart class="w-6 h-6" />
             </button>
-            <div class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full cursor-pointer">
+            <Link
+              href="/home/profile/"
+              class="w-8 h-8 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full cursor-pointer"
+            >
               <img src={logo} alt="logo" />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

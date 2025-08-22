@@ -20,7 +20,7 @@ export default component$(() => {
 
   return (
     <>
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
         {mockCards.map((card) => (
           <Card key={card.id} card={card} openCardDetails={openCardDetails} />
         ))}
