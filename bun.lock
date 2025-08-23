@@ -5,7 +5,6 @@
       "name": "my-qwik-empty-starter",
       "dependencies": {
         "clsx": "^2.1.1",
-        "qwik-sonner": "^1.0.3",
         "tailwind-merge": "^3.3.1",
         "zod": "^4.0.17",
       },
@@ -22,6 +21,7 @@
         "globals": "16.0.0",
         "prettier": "3.3.3",
         "prettier-plugin-tailwindcss": "^0.6.11",
+        "qwik-sonner": "^1.0.3",
         "tailwindcss": "^4.0.0",
         "typescript": "5.4.5",
         "typescript-eslint": "8.26.1",

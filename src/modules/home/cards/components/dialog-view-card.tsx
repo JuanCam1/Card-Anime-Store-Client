@@ -17,6 +17,7 @@ interface Props {
 export default component$<Props>(
   ({ selectedCard, closeCardDetails, showDialog }) => {
     useScrollLock(showDialog.value);
+
     if (!showDialog.value || !selectedCard.value) return null;
 
     return (
@@ -42,6 +43,9 @@ export default component$<Props>(
                     src={selectedCard.value.image}
                     alt={selectedCard.value.name}
                     class="w-full h-full object-contain"
+                    style={{
+                      viewTransitionName: `card-image-${selectedCard.value.id}`,
+                    }}
                   />
                 </div>
                 <div class="flex justify-center items-center gap-3">
